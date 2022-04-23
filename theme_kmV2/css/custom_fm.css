@@ -1,0 +1,455 @@
+.main-header {
+    z-index: 450;
+}
+img.menu_icon{
+	width: 20px;
+	margin-right: 5px;
+}
+
+form#wla-firm-search div div, form#wla-firm-search--2 div div{
+  width: 190px;
+  display: inline-block;
+}
+
+form#wla-firm-search div div#desc,form#wla-firm-search--2 div div#desc{
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+
+#desc{
+  font-size: 10px;
+  line-height: 1px;
+  color: #999999; 
+  font-size: 16px;
+}
+
+form#wla-firm-search div div, form#wla-firm-search--2 div div{
+    width: 190px;
+    display: inline-block;
+}
+
+form#wla-firm-search div div.form-item.form-type-select,  form#wla-firm-search--2 div div.form-item.form-type-select{
+    font-size: 11px;
+    line-height: 13px;
+    color: #16b8c7;
+    margin: 0 15px 4px;
+    padding: 8px;
+}
+
+select#edit-country, select#edit-country::after, select#edit-firm, select#edit-firm::after,
+select#edit-country--2, select#edit-country--2::after, select#edit-firm--2, select#edit-firm--2::after {
+    display: block;
+    transition: all 0.2s ease-in 0s;
+    border: 0 none;
+    font-size: 14px;
+    height: 45px;
+    width: 200px;
+    outline: 0 none;
+    vertical-align: middle;
+    color: #ffffff;
+    padding: 10px 30px;
+    font-weight: 700;
+}
+
+.country_list select, .country_list::after, .country_list::after {
+    background: #223555 none repeat scroll 0 0;
+    display: block;
+    transition: all 0.2s ease-in 0s;
+    color: #fff;
+}
+
+form#wla-firm-search div div.form-item.form-type-select.form-item-country label, form#wla-firm-search div div.form-item.form-type-select.form-item-firm label, form#wla-firm-search--2 div div.form-item.form-type-select.form-item-country label, form#wla-firm-search--2 div div.form-item.form-type-select.form-item-firm label{
+    margin-bottom: 15px;
+    font-family: Lato;
+    color: #223555;
+    font-size: 14px;     
+}
+
+.form-item-country span,.form-item.form-type-select.form-item-firm span {
+    color: White;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    padding: 0;
+    font-family: Lato;
+}
+
+
+form[id^='block-search-form'] input[id^='edit-submit'],
+div[id^='block-search-form'] input[id^='edit-submit']{
+    position: absolute;
+    right: 40px;
+    top: 6px;
+    width: 16px;
+    text-align: center;
+    line-height: 24px;
+    padding: 10px 0px;
+    background: none;
+    color: #223555;
+}
+
+
+form#wla-firm-search div input#edit-submit.form-submit, form#wla-firm-search--2 div input#edit-submit--2.form-submit {
+    background: #b89b5e;
+    border: medium none;
+    color: #ffffff;
+    cursor: pointer;
+    height: 45px;
+    margin: 10px 0 14px 12px;
+    padding: 0;
+    transition: all 0.2s ease-in 0s;
+	width: 80px;
+    font-size: 14px;
+    font-family: Lato;
+	display: inline-block;
+}
+
+.about-section {
+    position: relative;
+    padding: 20px 0px 0px;
+}
+
+#block-block-3, #block-wla-firm-search-firm-map {
+    height: 500px;
+    margin-top: 0px;
+    background: #f5f5f5 none repeat scroll 0 0;
+    padding-top: 10px;
+}
+
+#block-block-3 > p{
+  height: 100%;
+}
+
+section.services-style-one div.auto-container div.row.clearfix article div.inner-box div.text-content div.text p{
+	text-align: justify;
+	
+}
+.our-presence{
+  background-color: #f5f5f5;
+  margin-top: -20px;
+  z-index: 12;
+  position: relative;
+}
+
+section.our-presence div div.styled-heading::after{
+	height: 10px;
+	
+}
+.main-slider{
+	z-index: 1;
+}
+
+header.main-header div.middle-bar div.auto-container div.clearfix div.info-column.pull-left.wla_hidden h3,
+header.main-header div.middle-bar div.auto-container div.clearfix div.info-column.pull-right.wla_hidden h3,
+header.main-header div.middle-bar div.auto-container div.clearfix div.info-column.pull-left.wla_hidden p,
+header.main-header div.middle-bar div.auto-container div.clearfix div.info-column.pull-right.wla_hidden p{
+	color: #FFFFFF;
+}
+
+.main-header .social-links {
+	position: relative;
+	float: left;
+	margin-left: 40px;
+}
+
+.main-header .social-links a {
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+	width: 35px;
+	height: 35px;
+	line-height: 33px;
+	border: 1px solid rgba(255,255,255,0.05);
+	text-align: center;
+	margin: 5px 2px 5px 0px;
+	color: #b89b5e;
+	background: #9d7b34;
+	border-radius: 5px;
+	transition: all 0.5s ease;	
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+.main-header .social-links a:hover{
+	color:#ffffff;
+	background:#223555;	
+}
+
+.member-search h2{
+     padding-top: 25px;
+}
+.member-search .auto-container{
+    background-color: #f5f5f5;
+}
+
+section#member-form-header.member-search div.container-member-form-header div.auto-container{
+	background-color: rgba(245, 245, 245, 0.6);
+}
+
+#wla-firm-search > div > div.form-item.form-type-select.form-item-firm,
+#wla-firm-search--2 > div > div.form-item.form-type-select.form-item-firm{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+section.our-presence h2{
+    padding-top: 25px;
+	padding-left: 21px;
+}
+/*WLAW-15*/
+/*#member-form-header {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+}*/
+
+#member-form-header {
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+}
+.container-member-form-header{
+  width: 1172px;
+    display: block;
+    margin: auto;
+}
+
+#member-form-header .auto-container{
+  float: right;
+}
+/*180504: Le client a demandé d afficher le texte
+#member-form-header .styled-heading{
+  display: none;
+}
+
+
+#member-form-header #desc.description{
+  display: none;
+}*/
+
+#member-form-header .styled-heading{
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+}
+
+section#member-form-header.member-search div.container-member-form-header div.auto-container div.region.region-slideshow div#block-wla-firm-search-firm-block.block.block-wla-firm.first.last.odd div.styled-heading h2{
+	padding-top: 2px;
+	font-size: 20px;
+}
+
+section#member-form-header.member-search div.container-member-form-header div.auto-container div.region.region-slideshow div#block-wla-firm-search-firm-block.block.block-wla-firm.first.last.odd div.content form#wla-firm-search div div#desc.description{
+	color: #666666; 
+}
+
+
+/*header.main-header div.lower-section div.auto-container div.outer-box.clearfix div.link-box a.theme-btn {
+    background-color: #ffffff;
+    -webkit-animation-name: example; 
+    -webkit-animation-duration: 4s; 
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 10;
+}*/
+
+#edit-submitted-message--3{
+    resize: none;
+    height: 110px;
+}
+
+#edit-submitted-message{
+    resize: none;
+    height: 110px;
+}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {background-color: #ffffff;}
+    to {background-color: #b89b5e;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {background-color: #ffffff;}
+    to {background-color: #b89b5e;}
+}
+
+form#webform-client-form-89.webform-client-form.webform-client-form-89 div section.consult-section div.auto-container div.default-form.consultation-form div.row.clearfix div.form-group.col-md-12.col-sm-12.col-xs-12 div.form-actions input.webform-submit.button-primary.form-submit,
+form#webform-client-form-88.webform-client-form.webform-client-form-88 div section.contact-section div.auto-container div.row.clearfix div.form-column.column.col-lg-8.col-md-8.col-sm-12.col-xs-12 div.default-form.contact-form div.row.clearfix div.form-group.text-left.col-md-12.col-sm-12.col-xs-12 div.form-actions input.webform-submit.button-primary.form-submit{
+	position: relative;
+	display: inline-block;
+	line-height: 24px;
+	padding: 10px 30px;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background: #223555;
+	color: #ffffff !important;
+	border-radius: 5px;
+}
+
+form[id^='block-search-form'] input[id^='edit-submit'],
+div[id^='block-search-form'] input[id^='edit-submit']{
+    position: absolute;
+    right: 40px;
+    top: 6px;
+    width: 16px;
+    text-align: center;
+    line-height: 24px;
+    padding: 10px 0px;
+    background: none;
+    color: #223555;
+}
+body > div > div > div.page-outer-container > div > div.sidebar-page-container > div > div > div.col-lg-3.col-md-4.col-sm-6.col-xs-12 > aside > div:nth-child(2){
+	border: 1px solid #e0e0e0;
+	border-radius: 3px;	
+	padding: 10px 30px 10px 15px;
+}
+
+#edit-actions--3{
+	position: absolute;
+	right: 18px;
+	top: 14px;
+}
+
+/*Masquer des éléments statiques de la page attorneys blogs*/
+/*body.node-type-attoney-blog div.col-lg-3.col-md-4.col-sm-6.col-xs-12,
+body.node-type-attoney-blog div.styled-heading.margin-bott-40,
+body.node-type-attoney-blog div.post-author,
+body.node-type-attoney-blog div.comments-area,
+body.node-type-attoney-blog div.comment-form.default-form,
+body.node-type-attoney-blog article.column.featured-news-column div.post-bottom.clearfix,
+body.node-type-attoney-blog section.page-info{
+	display: none;
+}*/
+
+/*Masquer le titre des members list*/
+body.page-node-86 section.team-section div.auto-container div.styled-heading.centered h2{
+	display: none;
+}
+
+
+/*Limiter la taille de la bannière pour la page full members list*/
+section.page-title,
+body.page-node-86 section.page-title,
+body.node-type-attoney-blog section.page-title,
+body.node-type-member-firm section.page-title{
+	position:relative;
+	padding:74px 0px 2px;
+	background-size:cover;
+	background-position:center center;
+	background-repeat:no-repeat;
+	margin-top:-45px;
+}
+
+body.page-node-86 section.team-section,
+body.node-type-member-firm div.page-outer-container div.page-wrapper div.sidebar-page-container{
+	position:relative;
+	background:#ffffff;
+	padding:0px 0px 20px;
+}
+
+body.node-type-attoney-blog div.col-lg-3.col-md-4.col-sm-6.col-xs-12 aside.sidebar div.widget.sidebar-widget div.post-author div.inner-box p{
+	text-align: justify;
+}
+
+section#our-latest-news.news-section div.auto-container div.row.clearfix div.region.region-frontblocattoney div#block-views-front-bloc-attoney-block.block.block-views.contextual-links-region.first.last.odd div.view.view-front-bloc-attoney.view-id-front_bloc_attoney.view-display-id-block div.view-content div div.views-field.views-field-nothing span.field-content article.column.featured-news-column.col-md-4.col-sm-6.col-xs-12,
+section#our-latest-news.news-section div.auto-container div.row.clearfix div.region.region-frontblocattoney div#block-views-front-bloc-attoney-block div.view.view-front-bloc-attoney.view-id-front_bloc_attoney.view-display-id-block div.views-row.views-row-6.views-row-even.views-row-last div.views-field.views-field-nothing span.field-content article.column.featured-news-column.col-md-4.col-sm-6.col-xs-12,
+section#our-latest-news.news-section div.auto-container div.row.clearfix div.region.region-frontblocattoney div#block-views-front-bloc-attoney-block div.view.view-front-bloc-attoney.view-id-front_bloc_attoney.view-display-id-block div.views-field.views-field-nothing span.field-content article.column.featured-news-column.col-md-4.col-sm-6.col-xs-12m,
+section#our-latest-news.news-section div.auto-container div.row.clearfix div.region.region-frontblocattoney div#block-views-front-bloc-attoney-block div.view.view-front-bloc-attoney.view-id-front_bloc_attoney.view-display-id-block div.views-field.views-field-nothing span.field-content article.column.featured-news-column.col-md-4.col-sm-6.col-xs-12{
+	margin-bottom: 5px;
+
+}
+
+/*Formulaire d'authentification*/
+form#user-login div div.form-item.form-type-textfield.form-item-name input#edit-name.form-text.required,
+form#user-login div div.form-item.form-type-password.form-item-pass input#edit-pass.form-text.required,
+form div section.node-delete-confirm div.auto-container div.theme_kmV2-node-delete-confirm-form-wrapper div.form-item.form-type-textfield.form-item-name input#edit-name.form-text.required,
+form div section.node-delete-confirm div.auto-container div.theme_kmV2-node-delete-confirm-form-wrapper div div div input,
+form div section.node-delete-confirm div.auto-container div.theme_kmV2-node-delete-confirm-form-wrapper div div input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.our-presence div.auto-container div.styled-heading.centered h2{
+	margin-top: 0px;
+}
+
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.sponsors-section{
+	margin-top: 40px;	
+}
+
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.sponsors-section div.auto-container div.slider-outer ul.sponsors-slider.owl-carousel.owl-theme.owl-loaded{
+	margin-bottom: 0px;
+}
+
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.sponsors-section div div ul div div div li div.logo_country{
+	background: #b89b5e;
+	font-size: 18px;
+	font-family: 'Lora', serif;
+	font-weight: 700;
+	line-height: 2.1;	
+	color: #ffffff;
+	text-align: center;
+	border-left: thin solid #e0e0e0;	
+}
+
+html.js body.html.not-front.no-sidebars.page-user.i18n-en.section-user div.page-outer-container div.page-wrapper form#user-login div section.user-login div.auto-container div.theme_kmV2-user-login-form-wrapper div#edit-actions.form-actions.form-wrapper input#edit-submit.form-submit,
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section#member-form-header.member-search div.container-member-form-header div.auto-container div.region.region-slideshow div#block-wla-firm-search-firm-block.block.block-wla-firm div.content form#wla-firm-search div input,
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.member-search div.auto-container div.region.region-highlighted div#block-wla-firm-search-firm-block-main.block.block-wla-firm div.content form#wla-firm-search--2 div input,
+html.js body.html.logged-in.no-sidebars.i18n-en div.page-outer-container div.page-wrapper form#node-delete-confirm.confirmation div section.node-delete-confirm div.auto-container div.theme_kmV2-node-delete-confirm-form-wrapper div#edit-actions.form-actions.form-wrapper input,
+html.js body.html.no-sidebars.page-user  div.page-outer-container div.page-wrapper form div section.node-delete-confirm div.auto-container div.theme_kmV2-node-delete-confirm-form-wrapper div#edit-actions.form-actions.form-wrapper input{
+	position: relative;
+	display: inline-block;
+	line-height: 24px;
+	padding: 10px 30px;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background: #223555;
+	color: #ffffff !important;
+	border-radius: 5px;
+
+}
+
+html.js body.html.front.no-sidebars.page-node.i18n-en div.page-outer-container div.page-wrapper section.our-presence div.auto-container div.styled-heading{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+html.js body.html.not-front.no-sidebars.page-node.page-node-.page-node-107.node-type-attoney-blog.i18n-en.section-node div.page-outer-container div.page-wrapper div.page-outer-container div.page-wrapper div.sidebar-page-container div.auto-container div.row.clearfix div.col-lg-9.col-md-8.col-sm-12.col-xs-12 section.news-section.classic-view.blog-details.no-padd-top.padd-bott-70 article.column.featured-news-column div.inner-box.clearfix figure.image-box{
+	height: 250px;
+	
+}
+
+section article.column.featured-news-column div.inner-box.clearfix figure.image-box {
+	height: 300px;
+}
+
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+
+
+  /*Hide map from mobile terminals*/
+  .our-presence{
+    display: none;
+  }
+
+.container-member-form-header{
+  width: 100%;
+    display: block;
+    margin: auto;
+}
+ #member-form-header .auto-container {
+    float: left;
+}
+
+}

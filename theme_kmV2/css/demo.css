@@ -1,0 +1,155 @@
+a {
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+.bg-red {
+	background-image: url(../images/bg-red.jpg);
+}
+.bg-orange {
+	background-image: url(../images/bg-orange.jpg);
+}
+.bg-yellow {
+	background-image: url(../images/bg-yellow.jpg);
+}
+.bg-green {
+	background-image: url(../images/bg-green.jpg);
+}
+.bg-cyan {
+	background-image: url(../images/bg-cyan.jpg);
+}
+.bg-blue {
+	background-image: url(../images/bg-blue.jpg);
+}
+.bg-purple {
+	background-image: url(../images/bg-purple.jpg);
+}
+.bg-pink {
+	background-image: url(../images/bg-pink.jpg);
+}
+.bg-black {
+	background-image: url(../images/bg-black.jpg);
+}
+.tab-body {
+	max-width: 1120px;
+	margin: 0 auto;
+}
+div#key_practices{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+	margin-top: 10px;
+}
+
+.firm_member_header {
+  background-color: rgba(22, 184, 199, 0.8);
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.detailed_info .lawyer_name {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+}
+.detailed_info .firm_name {
+  color: #fff;
+  font-size: 28px;
+  line-height: 30px;
+  max-width: 410px;
+  margin-top: 23px;
+  text-align: left;
+}
+.detailed_info .lawyer_title {
+  color: #fff;
+  font-size: 20px;
+}
+.detailed_info .firm_address {
+  bottom: 0;
+  color: #fff;
+  font-size: 13px;
+  margin-top: 5px;
+}
+.detailed_info .firm_address p {
+  margin: 0;
+}
+.firm_logo {
+  padding-top: 10px;
+  right: 0;
+  top: 0;
+}
+.memberdetails_contact {
+  width: 95%;
+}
+.firm_details {
+  color: #fff;
+  float: left;
+  padding-top: 5px;
+}
+.firm_details ul {
+  list-style: outside none none;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 0;
+}
+.firm_details {
+  color: #fff;
+  font-size: 13px;
+}
+.firm_details ul li:first-child {
+  border-top: medium none;
+}
+.firm_details ul li.tel-icon {
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAiAAAAIgB69ySUgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFuSURBVDiNlZI/aBNxFMc/73eE24RugUxOByJIoEMrKCLodrkL2D1Tlo4tLdguIghKQHDP4ODqcRfESSxUQpcUOmZsC6Wk0CFbuPJelwvkn3B903sf3vfD78FPAOI4bpnZDrCmqs97vd4FJcuFYfjazLrAU6DmeV6nbBjAOefeA24KzGwrjuNXpQXAxiJU1Y8PEdyt4P3SAhH5MwvMbC/Lsv3SAlX9PjPnvu93y4YBXLVa/W1mN8VcyfP8w0ME3mAw0CAIEJE3BVsPguBoOByel3oBwHg8/ioip1MmIj+jKHpSRiDTJgzDx865PlAt0K2Zvcuy7O90J4qiA+AtcJim6fGcAKDRaNRF5Ah4VCA1s2++73+aTCYtEflScDOzH8DunACg2Ww+U9VfQG0G50BlxQUjt0iSJDkDNpn/TKvCANdLAoA0TS/r9foLYBu4+k/YRKSzdMJitdvtymg0aqpqLCIvAd/MTjzP+5wkyb97XoF92rYXNx8AAAAASUVORK5CYII=") no-repeat scroll left 4px;
+}
+
+.firm_details ul li.fax-icon {
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAawAAAGsBDl9bUQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGlSURBVDiNfZI9aBRRFIW/83YEUXAsbLRIaaUQJPaLYmMxs1WsImgRRQI2FiIWtmtrtaXYu4xoJ7h13EASxEJhIXbBIExQMDrOsXmGcZz1wuPCved99+c90bI8z68CL4BeOweUwPOyLO9MJpPvAKFDdN72DnCl42wDN9I0fdnv948CJB0AJH0riuJ1O55l2U1JAJfTNB0Cd5PBYLBo+7ZtAeOo7eqMXq83rOv6k6QLti8BJLZfAWci+TrwBFAXYDwebwFbWZatSboPoDzPK/5e2AjIJD3qggDE6tck3UvmVDttezQP0AA96Jw12j6wARwAG7Y/Ax9szxqa42FOB0h6UxTFErBeFMWSpKeSVkIIaw1ZT3me1y3ICLgF7AGbwEXgLXBW0q7tI8Bi1Nb/G2FaVdUy8LGqquX4Wg9tD5uiro/k6BeSJFkFTkV/znYt6VhDW4XGhbYdxIXZ9sz2V0m7cbRDwD8d2Hb8VGUIYWb7S/R7tndsn4j5Q8A+cPJPJITwyzZA3/Y0QqcxvdK4DPAu2H4M/AR+AM9CCEPg/ZyxmrZd1/XqbyUyuU5Wt81gAAAAAElFTkSuQmCC") no-repeat scroll left 5px;
+}
+
+.firm_details ul li.email-icon {
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAawAAAGsBDl9bUQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRnZI/SsNBEEbffJvNFfQIqYQUKoQIacQulVioIDaCiF5A8E9hIXgH9RAWIdaWRsFWBLHxCll2xyaBEDSS32vnezPDMNbtds/N7AwQ85Hd/ULAUQUZIJjZsSS9VJDHDAQcAF8V5M9SyqFKKbvuvmpm/TnknqRlSVuh0Wj0JTUl7ZVSvs2sA4Q/xAScppQuJd0D+wLc3ddzzgNJb8Aa8PGL/G5mbXd/jjEOgA3ABfgosODuD8B2SqkF3AJlVLur1+sr7r5pZj1gcdy1NjXFgJMYY0fSTs75OoQQgTAcDh+B5lTeaxMbTLJUSnkFnnLOmFmLP35leoNJZGbtGXUY3SD9E5pFlpldVWySgZsfQ+Nb3K6oqDAAAAAASUVORK5CYII=") no-repeat scroll left 8px;
+}
+
+
+.firm_details ul li.website-icon {
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAfQAAAH0Bx0gPAAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIQSURBVDiNdZM9aBRRFIW/8+LORAMiaDYoamMTokUCoogGKxcG3RkYMJUINhsRUdCkFCJiY4gYC/Gn08Iiyu4khYb4k0YUkUBsApLGLgRSDK5Ews48C2dlsq6vepx7zrn3/RzRsoIg6JNUsdZ6wM4MXpP0StKjarW6lOerufE8z3UcZxy4BHRk8DqwNcdPgIdxHI/Mz8//+mvgeZ5bKBRmJQ0CE5K+AD/SNC1Iugn0twz6wXGcU1NTU+tbABzHuQsMSjpXq9WeN1m+7z8D+iXNWWsXgSFgP3B8Y2NjEqioXC4fNMZ8lfS2VquV8m08z9vuum5orT0cRdFl3/f3SJoFDgHWGDOgIAjuAKOZ5mwURS9aLxYgDMO9SZK8BI40MWvthAHO5IB6O3GpVOpqNBoTeTGAJM8A3U3AGHNxbGzMtBp0dnYOSxpq411UEAQ/gW0517lisXh6dXW1K03Ta5IcYBjY0cag3tHb23se2JUDD9TrddcYswY8BU4ALrk/k2u2aID3bQpXkiTxgNvAcjsxgLX2k0nT9AmQth5b0g1gBFjK6p+BOMdpWGvvm5mZmQXgcbsO2ehloBpF0dGenp5u4GNWezA9Pb1sABzHuQq8+Y8J1trZMAx3r6ysTALHgNdxHF+Hf8N0D6gAm55S0oK1to8/IRuP4/jWpjDll+/7A5IuACeBfRn8XdK7LM7f8vzf6g6uS/XrwmwAAAAASUVORK5CYII=") no-repeat scroll left 5px;
+}
+
+
+
+
+.firm_details ul li {
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  margin: 5px 0 0 !important;
+  padding-bottom: 0;
+  padding-left: 20px;
+  padding-right: 0;
+  padding-top: 1px !important;
+  position: relative;
+}
+
+.firm_details a {
+  color: #fff;
+}
+
+.left_address, .right_address{
+	width: 49%;
+}
+
+div.sky-tabs div.website2{
+	clear: both;
+
+}
+
+.left_address{
+	float: left;
+}
+
+.right_address{
+	float: right;
+}
+
