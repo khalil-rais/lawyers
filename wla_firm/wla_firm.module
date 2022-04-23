@@ -1,0 +1,452 @@
+<?php
+/*
+160705 Updating the articles with images is working fine.
+160719 Script validated whith customer.
+160720 Source code cleaning.
+*/
+/**
+* Implements hook_menu().
+*/
+
+//Contains domain names, IP addresses and role of the node either main or kiosk.
+
+function wla_firm_menu() {
+	$items = array();
+	/*$items['kiosk_import'] = array(
+		'title' => 'Kiosk Import',
+		'page callback' => 'kiosk_import',
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+		'file' => '../node_export/node_export.pages.inc',
+	);
+*/
+
+	$items['firm_search'] = array(
+		'title' => 'Member Search',
+		'description' => 'Find a profile using the drop down menus below.',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('wla_firm_search'),
+		'access arguments' => array('access content'),
+		'type' => MENU_NORMAL_ITEM,
+	);
+
+	
+	return $items;
+}
+
+
+function wla_firm_search ($form, &$form_state) {
+
+    $form = array();
+	drupal_add_js(drupal_get_path('module', 'wla_firm') . '/form.js');
+	
+    $form['description']=array(
+        '#type'=>'markup',
+        '#markup'=> '<div id="desc" class="description">Find a profile using the drop down menus below.</div>',
+
+      );
+	$result = db_query("SELECT t.nid, t.tid, title, name
+	FROM {taxonomy_index} t inner join
+	{node} on
+	t.nid = node.nid 
+	inner join {taxonomy_term_data} on
+	t.tid = taxonomy_term_data.tid and
+	node.type = 'member_firm'
+	order by name");
+	$country_list = array(0 => 'Select Any');
+	$firm_list = array(0 => ' Select Any');
+	$firm_country_list  = array();
+	
+	foreach ($result as $row) {
+		$country_list[$row->tid] = $row->name;
+		$firm_list [$row->nid] = $row->title;
+		$firm_country_list [] = $row->nid . '_' . $row->tid .'_'. $row->title;
+	}
+
+	
+
+    $form['country']=array(
+        '#type' => 'select',
+        '#title'=>t('Country'),
+		'#options' => $country_list,
+        '#default_value' => 0,
+		'#size'=>1,
+		'#required' => false,
+
+      );
+        
+	asort ($firm_list);  
+    $form['firm']=array(
+        '#type' => 'select',
+        '#title'=>t('Member Firm'),
+		'#options' => $firm_list,
+        '#default_value' => 0,		
+        '#size'=>1,		
+		'#required' => false,
+      );	
+
+	$form['firm_mapping'] = array(
+		'#type' => 'hidden',
+		'#value' => implode ( '|' ,  $firm_country_list),
+	);
+	
+    $form['submit']=array(
+        '#type'=>'submit',
+        '#value'=>'Search'
+      );
+
+	  
+    return $form;
+}
+/*
+	$items['flotte/autocomplete/ruedepart'] = array(
+		'page callback' => 'flotte_autocomplete_rue',
+		'page arguments' => array(3, 4),
+		'access callback' => true,
+		'type' => MENU_CALLBACK,
+	);	
+*/
+
+/**
+* Validate the form.
+*/
+function wla_firm_search_validate($form, &$form_state) {
+	if (false) {
+		// We notify the form API that this field has failed validation.
+		form_set_error('pdf_mail',t('Invalid mail address.'));
+	}
+}
+
+/**
+* Validate the form.
+*/
+function wla_firm_search_submit($form, &$form_state) {
+	
+	if ($form_state['values']['firm'] ==0 ){
+		if ($form_state['values']['country'] !=0 ){
+		$form_state['redirect'] = 'browse-firm-members/'.$form_state['values']['country'];
+		}
+		else{
+			$form_state['redirect'] = 'browse-firm-members/all';
+		}
+	}
+	else{
+		$form_state['redirect'] = 'node/'.$form_state['values']['firm'];
+	}
+}
+
+function wla_firm_block_info() {
+	$blocks['search_firm_block'] = array(
+		'info' => t('Serach Form Block'),
+		'status' => TRUE,
+		'region' => 'slideshow',
+		'weight' => 0,
+		'visibility' => 1,
+	);
+	$blocks['author_info'] = array(
+		'info' => t('Author Info'),
+		'status' => TRUE,
+		'region' => 'slideshow',
+		'weight' => 1,
+		'visibility' => 1,
+	);
+	
+	
+	$blocks['search_firm_block_main'] = array( 
+		'info' => t('Serach Form Block Main'), 
+		'status' => TRUE, 
+		'region' => 'highlighted', 
+		'weight' => 0, 
+		'visibility' => 1, 
+	);  	
+	$blocks['search_firm_map'] = array(
+		'info' => t('Serach Map Block'),
+		'status' => TRUE,
+		'region' => 'footer_advertise',
+		'weight' => 3,
+		'visibility' => 1,
+	);	
+
+	$blocks['search_keywords_custom'] = array(
+		'info' => t('Serach Keywords Side'),
+		'status' => TRUE,
+		'region' => 'custom_search_block',
+		'weight' => 0,
+		'visibility' => 1,
+	);	
+
+	
+	return $blocks;
+}
+
+
+
+/**
+* Implements hook_block_view().
+*/
+function wla_firm_block_view($delta = '') {
+	//watchdog('talentinside', 'Participant Profile:'.$delta);
+	switch ($delta) {
+		case 'search_firm_block':
+			$block['subject'] = t('Members Search');
+			$block['content'] = drupal_get_form('wla_firm_search');
+			
+			return $block;
+			break;
+		case 'search_firm_block_main': 
+			$block['subject'] = t('Members Search'); 
+			$block['content'] = drupal_get_form('wla_firm_search'); 
+
+			return $block; 
+			break;
+		case 'author_info': 
+			$block['subject'] = "About the Author"; 
+			
+			
+			//Récupérer le noeud de la page
+			$current_page = current_path();
+			$keywords = preg_split("/\//", $current_page);
+			$nid = $keywords[1];
+			$nid = node_load($nid);
+			
+			//Récupérer les informations sur l'auteur
+			$user = profile2_load_by_user($nid->uid);
+			
+			//Récupérer les champs du noeud member firm
+			$keywords = preg_split("/\//", $user['main']->field_website['und'][0]['value']);
+			$node_member_firm = node_load ($keywords[1]);
+			
+			//Intégrer du contenu dans le bloc:
+			$file_information = file_create_url ($user['main']->field_lawyer_photo['und'][0]['uri']);
+			//$block['content'] = $file_information."|".$user['main']->field_quick_facts['und'][0]['value'].l(' Read More... ', $user['main']->field_website['und'][0]['value'])."|".$node_member_firm->field_linkedin['und'][0]['url'].'|'.$node_member_firm->field_google_plus['und'][0]['url'].'|'.$node_member_firm->field_twitter['und'][0]['url'].'|'.$node_member_firm->field_facebook['und'][0]['url'];
+			
+			//ob_start();
+			//var_dump($node_member_firm);
+			//var_dump($user['main']->field_quick_facts['und'][0]['value']);
+			//var_dump($user['main']->field_website['und'][0]['value']);
+			//$dumpy = ob_get_clean();	
+			//watchdog('wlawa', 'Node new id is:'.$dumpy);
+			
+
+			return $block; 
+			break; 	
+		case 'search_firm_map':
+			
+			/*drupal_add_css(drupal_get_path('module', 'wla_firm') . '/simple/css/reset.css');			
+			drupal_add_css(drupal_get_path('module', 'wla_firm') . '/simple/css/fonts.css');
+			drupal_add_css(drupal_get_path('module', 'wla_firm') . '/simple/css/style.css');
+			drupal_add_css(drupal_get_path('module', 'wla_firm') . '/simple/css/map.css');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/RequestAnimationFrame.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/jquery.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/raphael.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/raphaelAnimateViewBox.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/scale.raphael.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/paths.js');
+			drupal_add_js(drupal_get_path('module', 'wla_firm') . '/simple/js/init.js');
+			*/
+			/*$block['subject'] = t('Map Search');*/
+			$block['content'] = '<p><iframe class="world_map" src="/kammoun/simple" frameborder="no" height="100%" width="100%"></iframe></p>';
+			/*$block['content'] = '    <div id="container">
+    
+        <div class="mapWrapper">
+   
+                <div id="map"></div>
+                
+
+                
+                <div id="text"></div>
+                     
+        </div>
+        
+    </div>';*/
+			
+			return $block;
+			break;	
+		case 'search_keywords_custom':
+			$block['subject'] = ''; 
+			//$block['content'] = 'Ajbouni'; 
+			$block['content'] = drupal_get_form('search_block_form'); 
+
+			return $block; 
+			break;						
+	}
+}
+/**
+* A module-defined block content function.
+*/
+function wla_firm_block_contents($delta) {
+	switch ($delta) {
+		case 'search_firm_block':
+			if (user_access('administer comments')) {
+				$nbr_comments = variable_get('pending_comment_count');
+				$result = db_query("SELECT cid, subject FROM {comment} WHERE status = 0 limit 				$nbr_comments");
+				$items = array();
+				foreach ($result as $row) {
+					$items[] = l($row->subject, 'comment/' . $row->cid . '/edit');
+				}
+				return array('#markup' => theme('item_list', array('items' => $items)));
+			}
+			break;
+	}
+}
+
+function wla_firm_custom_theme() {
+
+  // Allow the user to request a particular theme via a query parameter.
+  $current_page = current_path();
+
+  
+	if ($current_page =='node/add/attoney-blog') {
+		return 'seven';
+	}
+	$matches = array();
+	preg_match('/node\/([0-9]+)\/edit/' , $current_page, $matches);
+	if (isset ($matches[1]) and is_numeric($matches[1])){
+		ob_start();
+		var_dump($matches);
+		$dumpy = ob_get_clean();	
+		watchdog('wlawa', 'Page id is:'.$dumpy);  
+		return 'seven';
+	}
+  
+} 
+
+function _notification_mail_wlawa ($subject,$content_title,$action,$member,$to){
+
+	$message_html = '<p>Dear Moderator,</p>
+	<p>Please be infomred that following content: "<strong>"'.$content_title.'"</strong>" was '.$action.' by WLA member <strong>'.$member.'</strong>.</p>
+	<p>Best Regards,</p>
+	<p>WLA Website</p>';
+
+	 
+	
+
+	$htmlContent = '
+		<html>
+		<head>
+			<title>Welcome to CodexWorld</title>
+		</head>
+		<body>'.
+			$message_html
+			.'
+		</body>
+		</html>';
+
+	// Set content-type header for sending HTML email
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+	// Additional headers
+	$headers .= 'From: WLA Contact<contact@wlawa.com>' . "\r\n";
+
+	// Send email
+	if(mail($to,$subject,$htmlContent,$headers)){
+		$Msg = 'Email has sent successfully.';
+	}
+	else{
+		$Msg = 'Email sending fail.';
+	}
+	return $Msg;	
+}
+
+function _notification_mail ($source, $cc=null, $destination, $sujet, $message_html,$path=null,$filename=null) {
+
+	
+	$random_hash = md5(date('r', time())); 
+	
+	
+	$headers = "From: WLA Website <".$source.">\r\nReply-To: ".$source . "\r\n";
+	if (isset ($cc)){
+		$headers .= 'Cc: '.$cc . "\r\n";
+	}
+	$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\""; 
+	
+	//define the body of the message. 
+	
+	$message ="--PHP-mixed-".$random_hash."\n";
+	$message.="Content-Type: multipart/alternative; boundary=\"PHP-alt-".$random_hash."\"\n\n";
+	$message.="--PHP-alt-".$random_hash."\n";
+	$message.="Content-Type: text/html; charset=\"UTF-8\"" ."\n";
+	$message.="Content-Transfer-Encoding: 7bit"."\n\n";
+	$message.="<html>
+<head>
+<title>Notification email</title>
+</head>
+<body>".$message_html."
+</body>
+</html>"."\n\n";
+	$message.="--PHP-alt-".$random_hash."--\n\n";
+	
+	if (isset($filename)){
+		
+		$attachment = chunk_split(base64_encode(file_get_contents($path.$filename))); 
+		$message.="--PHP-mixed-".$random_hash."\n";
+		$message.="Content-Type: application/zip; name=\"".$filename."\""."\n";
+		$message.="Content-Transfer-Encoding: base64"."\n";
+		$message.="Content-Disposition: attachment  ."."\n\n";
+		$message.=$attachment;
+		$message.="--PHP-mixed-".$random_hash."-- \n";	
+	}
+	
+	$mail_sent = @mail( $destination, '=?utf-8?B?'.base64_encode($sujet).'?=', $message, $headers ); 
+	watchdog('wlawa', 'Email is sent:'.$mail_sent);
+	
+}
+
+function wla_firm_node_presave($node){
+	if($node->type=="attoney_blog"){
+		$user = user_load($node->uid);
+		if (!in_array('Moderator', $user->roles) and in_array('WLA Member', $user->roles) ){
+			//ob_start();
+			//var_dump($node);
+			//$dumpy = ob_get_clean();	
+			//watchdog('wlawa', 'Node structure is:'.$dumpy);
+
+			//Récupérer les informations sur l'auteur
+			$user_p2 = profile2_load_by_user($node->uid);
+			$keywords = preg_split("/\//", $user_p2['main']->field_website['und'][0]['value']);
+			$node_member_firm = node_load ($keywords[1]);
+			$node->status = 0; //(1 or 0): published or not
+			drupal_set_message('Your article was successfully created and submitted to the moderator for validation.');	
+			
+			
+			global $base_url;
+			$source = 'contact@dev.wlawa.com';
+			
+
+			//$destination = 'khalil.rais@freelancemodule.com';
+			$destination= 'moderation@wlawa.com';
+			$sujet = 'WLAWA Content Modification';
+			
+			$contexte = $node->is_new ? 'added':'edited';
+			$message_html = '<p>Dear Moderator,</p>
+<p>Please be infomred that following content: "<strong>'.$node->title.'</strong>" was '.$contexte.' by WLA member <strong>'.$node_member_firm->field_responsible['und'][0]['value'].'</strong>.</p>
+<p>Best Regards,</p>
+<p>WLA Website</p>';
+			
+			$result = _notification_mail_wlawa ($sujet,$node->title,$contexte,$node_member_firm->field_responsible['und'][0]['value'],$destination);
+			watchdog('wlawa', 'Mail message is:'.$result);
+		}
+		//else{
+		//	ob_start();
+		//	var_dump($user->roles);
+		//	$dumpy = ob_get_clean();	
+		//	watchdog('wlawa', 'Role structure is:'.$dumpy);			
+		//}
+	}
+	//else{
+	//	watchdog('wlawa', 'Node type is not it');			
+	//}
+}
+
+function wla_firm_user_login(&$edit, $account){
+	if (in_array ("WLA Member",$account->roles)){
+		$edit['redirect']= '/node/97';
+	}
+	
+	//ob_start();
+	//var_dump($edit);
+	//var_dump($account);			
+	//$dumpy = ob_get_clean();	
+	//watchdog('wlawa', 'User Info:'.$dumpy);
+}
